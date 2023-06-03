@@ -12,6 +12,7 @@ class _ColorpageState extends State<Colorpage> {
   Color clr = Colors.red;
 
   int a = 0;
+  int b = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +20,27 @@ class _ColorpageState extends State<Colorpage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           a++;
+          b++;
 
-          if (a == 0) {
-
-            clr = Colors.black;
-          } else{
-            clr = Colors.blueAccent;
+          if (a == 1) {
+            setState(() {
+              clr = Colors.black;
+              
+            });
+          } else if (a == 2) {
+            setState(() {
+              clr = Colors.blueAccent;
+            });
+          } else if (a == 3) {
+            setState(() {
+              clr = Colors.yellow;
+            });
+          } else {
+            a = 0;
+            setState(() {
+              clr = Colors.red;
+            });
           }
-
-          
-          setState(() {
-            clr;
-          });
-
-
         },
       ),
       appBar: AppBar(
@@ -44,6 +52,14 @@ class _ColorpageState extends State<Colorpage> {
           height: 100,
           width: 100,
           color: clr,
+          child: Center(
+              child: Text(
+            "$b",
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
+          )),
         ),
       ),
     );
