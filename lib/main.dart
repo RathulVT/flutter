@@ -7,6 +7,7 @@ import 'text_field_samp.dart';
 import 'textfeild_controller.dart';
 import 'textfielf_task2.dart';
 import 'windows_logo.dart';
+import 'windowslogo_colorchanging.dart';
 
 
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
 
       ),
 
-      home: Windowslogo(),
+      home: WindowsColorchanging(),
     );
   }
 }
