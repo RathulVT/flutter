@@ -20,7 +20,6 @@ class _TabbarpagesState extends State<Tabbarpages> {
               width: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(300),
-               border: BoxBorder,
                 color: Colors.blueGrey,
               ),
             ),

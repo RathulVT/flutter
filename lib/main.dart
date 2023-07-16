@@ -8,6 +8,7 @@ import 'package:untitled/whatsapp_frontpage.dart';
 
 import 'FormField.dart';
 import 'NavgationButton.dart';
+import 'Telegram_Ui/Telegram_ui.dart';
 import 'Telegram_ui.dart';
 import 'drawer.dart';
 import 'form.dart';
@@ -30,12 +31,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true
 
       ),
 
-      home: DataloginPage(),
+      home: TelegramUi(),
 
     );
   }
