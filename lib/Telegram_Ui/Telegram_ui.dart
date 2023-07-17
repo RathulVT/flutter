@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/Telegram_Ui/drawerpage.dart';
 import 'package:untitled/Telegram_Ui/chats.dart';
+import 'calls.dart';
+import 'drawerpage.dart';
 
 class TelegramUi extends StatefulWidget {
   const TelegramUi({Key? key}) : super(key: key);
@@ -9,11 +10,11 @@ class TelegramUi extends StatefulWidget {
   State<TelegramUi> createState() => _TelegramUiState();
 }
 
-class _TelegramUiState extends State<TelegramUi> with TickerProviderStateMixin{
+class _TelegramUiState extends State<TelegramUi> with TickerProviderStateMixin {
   late TabController tabController;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
   }
@@ -21,62 +22,47 @@ class _TelegramUiState extends State<TelegramUi> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( actions: [
+        IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+      ],
         flexibleSpace: Column(
           children: [
-            TabBar(tabs:[
-              TextButton(onPressed: (){}, child: const Text("Chats")),
-              TextButton(onPressed: (){}, child: const Text("Groups")),
-            ],controller: TabController(length: 2, vsync: this ),),
+            TabBar(
+              tabs: [
+                TextButton(onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Chats(),));
+                }, child: const Text("Chats")),
+                TextButton(onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Callspage(),));
+                }, child: const Text("Calls")),
+              ],
+              controller: TabController(length: 2, vsync: this),
+            ),
           ],
         ),
-        backgroundColor: Colors.black26,centerTitle: true,
+        backgroundColor: Colors.black26,
+        centerTitle: true,
       ),
-        drawer: const DrawerPage(),
-      // Drawer(
-      //   width: 200,
-      //   child: ListView(
-      //     children: const [
-      //       SizedBox(
-      //         height: 100,
-      //         child: DrawerHeader(
-      //             child: Column(
-      //           crossAxisAlignment: CrossAxisAlignment.start,
-      //           children: [
-      //             CircleAvatar(
-      //               backgroundColor: Colors.green,
-      //             ),
-      //             Text("name"),
-      //           ],
-      //         )),
-      //       ),
-      //       ListTile(
-      //         leading: Icon(Icons.person),
-      //         title: Text("Contacts"),
-      //       ),
-      //       ListTile(
-      //         leading: Icon(Icons.bookmark),
-      //         title: Text("saved msg"),
-      //       ),
-      //       ListTile(
-      //         leading: Icon(Icons.settings),
-      //         title: Text("settings"),
-      //       ),
-      //       ListTile(
-      //         leading: Icon(Icons.person_add),
-      //         title: Text("Contacts"),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      drawer: Drawer(
+        width: 200,
+        child: ListView(children: const [
+          Drawerpage(),
+        ]),
+      ),
+
+
       body: TabBarView(
         controller: tabController,
         children: const [
-        Tab(
-          child: Chats(),
-        ),
-      ],
 
+            Chats(),
+            Callspage(),
+
+
+
+
+
+        ],
       ),
     );
   }
