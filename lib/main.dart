@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:untitled/radio_button.dart';
 import 'package:untitled/whatsapp_frontpage.dart';
 
+
 import 'FormField.dart';
+import 'Gmail/Gmailpage.dart';
 import 'NavgationButton.dart';
 import 'Telegram_Ui/Telegram_ui.dart';
 import 'Telegram_ui.dart';
@@ -23,7 +25,9 @@ import 'form.dart';
 // import 'listviewTask.dart';
 import 'Listviewbuilder.dart';
 import 'homepage.dart';
-import 'login_page/Gmail/Gmailpage.dart';
+
+
+
 
 void main(){
 
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
 
       ),
 
-      home: Gmailpage(),
+      home: gmailpagehome(),
 
     );
   }
