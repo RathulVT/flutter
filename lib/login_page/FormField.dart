@@ -104,10 +104,9 @@ class _DataloginPageState extends State<DataloginPage> {
                 ElevatedButton(
                     onPressed: () {
                       if (fKey.currentState!.validate()) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SavedPage()));
+                       // Navigator.push(context, route);
+
+
                       }
                     },
                     child: Text("Save data")),
