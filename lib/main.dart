@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
 
       ),
 
-      home: Api_task(),
+      home: SimpleApi(),
 
     );
   }

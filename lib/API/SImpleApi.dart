@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -12,9 +14,8 @@ class _SimpleApiState extends State<SimpleApi> {
   getdate() async {
     final res = await get(Uri.parse("https://dummyjson.com/carts"));
     if (res.statusCode==200) {
-      print(res.body);
-    }else {
-      print ("some error");
+      var data = jsonDecode(res.body);
+      return data;
     }
   }
 
@@ -22,7 +23,13 @@ class _SimpleApiState extends State<SimpleApi> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: getdate(),
+        child: FutureBuilder(future: getdate(),builder: (context, AsyncSnapshot snapshot) {
+          if(snapshot.hasData){
+            return Text("${getdate()}");
+          }else{
+            return Center(child: Text("something wrong"));
+          }
+        },),
       ),
     );
   }
