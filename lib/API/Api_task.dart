@@ -26,8 +26,8 @@ class _Api_taskState extends State<Api_task> {
         child: FutureBuilder(
           future: getdatas(),
           builder: (context,AsyncSnapshot snapshot) {
-            if (snapshot.connectionState == ConnectionState) {
-              return Center(
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
@@ -39,7 +39,7 @@ class _Api_taskState extends State<Api_task> {
                 ],
               );
             } else {
-              return Text("something wnt wrong");
+              return const Text("something wnt wrong");
             }
           },
         ),

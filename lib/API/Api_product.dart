@@ -23,29 +23,49 @@ class _Product_ApiState extends State<Product_Api> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            FutureBuilder(
-              future: getdata(),
-              builder: (context, AsyncSnapshot snapshot) {
-                if (snapshot.connectionState == ConnectionState) {
-                  return Center(
-                    child: CircularProgressIndicator(),
+        child: FutureBuilder(
+          future: getdata(),
+          builder: (context, AsyncSnapshot snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasData) {
+              return ListView.separated(
+                itemCount: snapshot.data["products"].length,
+                itemBuilder: (context, index) {
+                  return ListTile(contentPadding: EdgeInsets.all(8.0),
+                    leading: CircleAvatar(radius: 40,
+                      backgroundImage: NetworkImage(
+                        snapshot.data["products"][index]["thumbnail"],
+                      ),
+                    ),
+                    title: Text(
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      snapshot.data["products"][index]["title"].toString(),
+                    ),
+                    subtitle: Text(
+                      snapshot.data["products"][index]["description"]
+                          .toString(),
+                    ),
+                    trailing: Text(
+                      snapshot.data["products"][index]["price"].toString(),
+                    ),
                   );
-                }
-                if (snapshot.hasData) {
-                  return ListView(
-                    children: [Text(snapshot.data["products"]["total"])],
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const Divider(
+                    color: Colors.black,
                   );
-                }
-                if (snapshot.hasError) {
-                  return Text("something error");
-                } else {
-                  return Text("something went wrong");
-                }
-              },
-            )
-          ],
+                },
+              );
+            }
+            if (snapshot.hasError) {
+              return const Text("something error");
+            } else {
+              return const Text("something went wrong");
+            }
+          },
         ),
       ),
     );
