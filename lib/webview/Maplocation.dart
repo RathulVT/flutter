@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-class Mygeolocator extends StatefulWidget {
-  const Mygeolocator({Key? key}) : super(key: key);
+class Maplocationtask extends StatefulWidget {
+  const Maplocationtask({Key? key}) : super(key: key);
 
   @override
-  State<Mygeolocator> createState() => _MygeolocatorState();
+  State<Maplocationtask> createState() => _MaplocationtaskState();
 }
 
-class _MygeolocatorState extends State<Mygeolocator> {
-
+class _MaplocationtaskState extends State<Maplocationtask> {
 
   getlocation()async{
-  bool serviceEnabled;
+
+    bool serviceEnabled;
     LocationPermission permission;
-
-
-
-
 
     // Test if location services are enabled.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -49,35 +45,19 @@ class _MygeolocatorState extends State<Mygeolocator> {
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
-     Position currentPosition = await Geolocator.getCurrentPosition(desiredAccuracy:LocationAccuracy.best );
-     print("longitude :${currentPosition.longitude}");
-     print("latitude : ${currentPosition.latitude}");
-
-
-
+    return await Geolocator.getCurrentPosition();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              ElevatedButton(onPressed: (){
-                getlocation();
-
-
-              }, child: Text("Locate")),
-
-
-
-
-
-            ],
-          ),
+        child: Column(
+          children: [
+            Container(
+              child: ,
+            )
+          ],
         ),
       ),
     );
