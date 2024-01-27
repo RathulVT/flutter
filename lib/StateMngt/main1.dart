@@ -7,52 +7,43 @@ import 'package:provider/provider.dart';
 
 import 'package:untitled/StateMngt/ImagePicker/Controller/image_Controller.dart';
 
-import 'Gmail/Gmailpage.dart';
-import 'StateMngt/CounterApp/Controller/count_controller.dart';
-import 'StateMngt/ImagePicker/view/imagepickerpage.dart';
-//
-// import 'Telegram_Ui/Telegram_ui.dart';
-// import 'Telegram_ui.dart';
-// import 'dependencies_samp.dart';
-// import 'drawer.dart';
-// import 'Inlwellfun.dart';
-// import 'form.dart';
-// // import 'package:untitled/windowscolor_changing_task.dart';
-// //
-// // import 'appbar.dart';
-// // import 'containerDeco.dart';
-// // import 'listTile.dart';
-// // import 'listview.dart';
-// // import 'listviewTask.dart';
-// import 'Listviewbuilder.dart';
-// import 'fururebuilder/FutureBuilder_tak.dart';
-// import 'homepage.dart';
-// import 'listview_index_builder.dart';
-
+import '../animated/animatedview.dart';
+import 'CounterApp/Controller/count_controller.dart';
+import 'ImagePicker/view/imagepickerpage.dart';
 
 
 
 void main(){
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true
+    return
+
+      // ChangeNotifierProvider(create: (context) => countController(),); : => for single provider
+
+
+      MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) =>countController(),),
+        ChangeNotifierProvider(create: (context) => imagepickerController(),),
+
+      ],
+      child: MaterialApp(
+         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true
+
+        ),
+
+        home: const Animatedview(),
 
       ),
-
-      home: const gmailpagehome(),
-
     );
   }
 }

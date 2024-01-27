@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:untitled/StateMngt/ImagePicker/view/imagepickerpage.dart';
+
 
 class imagepickerController extends ChangeNotifier{
   File? image;
