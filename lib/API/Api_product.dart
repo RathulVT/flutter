@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 class Product_Api extends StatefulWidget {
   const Product_Api({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class Product_Api extends StatefulWidget {
 
 class _Product_ApiState extends State<Product_Api> {
   getdata() async {
-    final res = await get(Uri.parse("https://dummyjson.com/products"));
+    final res = await http.get(Uri.parse("https://dummyjson.com/products"));
     if (res.statusCode == 200) {
       var productdata = jsonDecode(res.body);
       return productdata;

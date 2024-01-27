@@ -3,48 +3,30 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:untitled/radio_button.dart';
-import 'package:untitled/shared_preferences.dart';
-import 'package:untitled/showtimepicker.dart';
-import 'package:untitled/webview/Mapwebview.dart';
-import 'package:untitled/webview/Webview.dart';
-import 'package:untitled/webview/geolocator.dart';
-import 'package:untitled/whatsapp_frontpage.dart';
-import 'package:untitled/whatsapp_profile_ui.dart';
+import 'package:provider/provider.dart';
 
+import 'package:untitled/StateMngt/ImagePicker/Controller/image_Controller.dart';
 
-import 'API/Api_product.dart';
-import 'API/Api_task.dart';
-import 'API/PostAPi.dart';
-import 'API/PostTask.dart';
-import 'API/SImpleApi.dart';
-import 'DatePicker.dart';
-import 'FormField.dart';
-import 'Gmail/Gmailpage.dart';
-import 'Gridview.dart';
-import 'Imagepicker.dart';
-import 'LIstviewadding_textwithbutton.dart';
-import 'LIstviewofMap.dart';
-import 'ListviewBuilder_task.dart';
-import 'NEwlogin/LoginPage_task.dart';
-import 'NavgationButton.dart';
-import 'Telegram_Ui/Telegram_ui.dart';
-import 'Telegram_ui.dart';
-import 'dependencies_samp.dart';
-import 'drawer.dart';
-import 'Inlwellfun.dart';
-import 'form.dart';
-// import 'package:untitled/windowscolor_changing_task.dart';
+import 'StateMngt/CounterApp/Controller/count_controller.dart';
+import 'StateMngt/ImagePicker/view/imagepickerpage.dart';
 //
-// import 'appbar.dart';
-// import 'containerDeco.dart';
-// import 'listTile.dart';
-// import 'listview.dart';
-// import 'listviewTask.dart';
-import 'Listviewbuilder.dart';
-import 'fururebuilder/FutureBuilder_tak.dart';
-import 'homepage.dart';
-import 'listview_index_builder.dart';
+// import 'Telegram_Ui/Telegram_ui.dart';
+// import 'Telegram_ui.dart';
+// import 'dependencies_samp.dart';
+// import 'drawer.dart';
+// import 'Inlwellfun.dart';
+// import 'form.dart';
+// // import 'package:untitled/windowscolor_changing_task.dart';
+// //
+// // import 'appbar.dart';
+// // import 'containerDeco.dart';
+// // import 'listTile.dart';
+// // import 'listview.dart';
+// // import 'listviewTask.dart';
+// import 'Listviewbuilder.dart';
+// import 'fururebuilder/FutureBuilder_tak.dart';
+// import 'homepage.dart';
+// import 'listview_index_builder.dart';
 
 
 
@@ -59,15 +41,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) =>countController(),),
+        ChangeNotifierProvider(create: (context) => imagepickerController(),),
+
+      ],
+      child: MaterialApp(
+         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true
+
+        ),
+
+        home: Imagepicker(),
 
       ),
-
-      home: Mygeolocator(),
-
     );
   }
 }

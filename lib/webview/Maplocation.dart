@@ -55,7 +55,7 @@ class _MaplocationtaskState extends State<Maplocationtask> {
         child: Column(
           children: [
             Container(
-              child: ,
+              child: const Text(""),
             )
           ],
         ),
