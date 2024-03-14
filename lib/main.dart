@@ -2,6 +2,7 @@
 
 
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +11,10 @@ import 'package:untitled/StateMngt/ImagePicker/Controller/image_Controller.dart'
 import 'Gmail/Gmailpage.dart';
 import 'StateMngt/CounterApp/Controller/count_controller.dart';
 import 'StateMngt/ImagePicker/view/imagepickerpage.dart';
+import 'firebase/Cloud_firestore_.dart';
+import 'firebase/firebase_login_page.dart';
+import 'firebase/signIn_firebase.dart';
+import 'firebase_options.dart';
 //
 // import 'Telegram_Ui/Telegram_ui.dart';
 // import 'Telegram_ui.dart';
@@ -32,8 +37,12 @@ import 'StateMngt/ImagePicker/view/imagepickerpage.dart';
 
 
 
-void main(){
+void main()async{
 
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -51,7 +60,7 @@ class MyApp extends StatelessWidget {
 
       ),
 
-      home: const gmailpagehome(),
+      home: cloud_firestore_(),
 
     );
   }
